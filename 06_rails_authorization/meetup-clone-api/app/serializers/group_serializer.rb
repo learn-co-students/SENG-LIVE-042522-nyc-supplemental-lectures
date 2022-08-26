@@ -13,6 +13,7 @@ class GroupSerializer < ActiveModel::Serializer
     if @memberships
       @memberships
     else
+      return [] unless current_user
       @memberships = {}
       current_user.memberships.each do |membership|
         @memberships[membership.group_id] = membership
